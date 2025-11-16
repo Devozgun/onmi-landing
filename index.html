@@ -84,30 +84,41 @@
   </style>
 </head>
 <body>
+
+  <!-- LOGO -->
   <div class="logo">
     <div class="logo-icon"><div class="dot"></div></div>
     ONMI
   </div>
 
+  <!-- HEADLINE -->
   <h1>Come Closer.</h1>
   <p>The premium platform where idols and true fans connect in real, meaningful moments.</p>
 
+  <!-- EMAIL FORM -->
   <div class="email-box">
     <input type="email" placeholder="Enter your email" />
     <button>Join Waitlist</button>
   </div>
 
   <footer>© 2025 ONMI. All rights reserved.</footer>
+
+  <!-- WAITLIST SCRIPT -->
   <script>
     async function joinWaitlist() {
       const email = document.querySelector("input[type='email']").value;
       if (!email) return alert("Please enter an email.");
+
       try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwdVCKuZveMTULgq-i2Ie3Z9RT4xksCEI5mJ99_D7veAx-89uUXTsFKWhRDAGpQADWR/exec", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email })
-        });
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbw1-KBZ6nr8l0YfqHUG2AKOLf0GdU5_AadFpayVPagTASPWn_4l_1smajIdmBoJHFGx/exec",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email })
+          }
+        );
+
         if (response.ok) {
           alert("You're on the waitlist! 💜");
         } else {
@@ -117,32 +128,9 @@
         alert("Network error. Try again.");
       }
     }
+
     document.querySelector("button").addEventListener("click", joinWaitlist);
-  <script>
-  async function joinWaitlist() {
-    const email = document.querySelector("input[type='email']").value;
-    if (!email) return alert("Please enter an email.");
-
-    try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbw1-KBZ6nr8l0YfqHUG2AKOLf0GdU5_AadFpayVPagTASPWn_4l_1smajIdmBoJHFGx/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email })
-      });
-
-      if (response.ok) {
-        alert("You're on the waitlist! 💜");
-      } else {
-        alert("Something went wrong. Try again.");
-      }
-    } catch (err) {
-      alert("Network error. Try again.");
-    }
-  }
-
-  document.querySelector("button").addEventListener("click", joinWaitlist);
-</script>
+  </script>
 
 </body>
 </html>
-
