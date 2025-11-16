@@ -103,7 +103,7 @@
 
   <footer>© 2025 ONMI. All rights reserved.</footer>
 
-  <!-- WAITLIST SCRIPT -->
+  <!-- WORKING WAITLIST SCRIPT -->
   <script>
     async function joinWaitlist() {
       const email = document.querySelector("input[type='email']").value;
@@ -114,16 +114,19 @@
           "https://script.google.com/macros/s/AKfycbw1-KBZ6nr8l0YfqHUG2AKOLf0GdU5_AadFpayVPagTASPWn_4l_1smajIdmBoJHFGx/exec",
           {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email })
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: "email=" + encodeURIComponent(email)
           }
         );
 
-        if (response.ok) {
+        const text = await response.text();
+
+        if (text === "success") {
           alert("You're on the waitlist! 💜");
         } else {
           alert("Something went wrong. Try again.");
         }
+
       } catch (err) {
         alert("Network error. Try again.");
       }
@@ -134,3 +137,4 @@
 
 </body>
 </html>
+
